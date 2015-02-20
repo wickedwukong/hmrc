@@ -18,5 +18,10 @@ class CheckoutSpec extends Specification {
     }
   }
 
-
+  "An orange" should {
+    "cost 25p" in {
+      val oneOrangeOnlyShoppingCart: List[String] = List("orange")
+      new Checkout().scan(oneOrangeOnlyShoppingCart) must_== 25
+    }
+  }
 }
