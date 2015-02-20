@@ -4,6 +4,7 @@ import scala.collection.immutable.Iterable
 
 object Checkout {
   def applyAppleOffer(numberOfApples: Int): Int = ((numberOfApples / 2) + (numberOfApples % 2)) * 60
+  def applyOrangeOffer(numberOfOranges: Int): Int = ((numberOfOranges  % 3 * 25) + (numberOfOranges / 3 * 2 * 25))
 }
 
 class Checkout {
@@ -16,7 +17,7 @@ class Checkout {
       if (item == "apple")
         applyAppleOffer(itemList.size)
       else
-        itemList.size * 25
+       applyOrangeOffer(itemList.size)
     }
     }
 

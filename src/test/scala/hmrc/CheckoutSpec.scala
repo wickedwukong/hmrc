@@ -39,6 +39,13 @@ class CheckoutSpec extends Specification {
     }
   }
 
+  "Three oranges" should {
+    "cost 50p because of the 3 for the price of 2 offer" in {
+      val threeOrangeShoppingCart: List[String] = List("orange", "orange", "orange")
+      new Checkout().scan(threeOrangeShoppingCart) must_== 50
+    }
+  }
+
   "Mixed 3 apple and one orange shopping cart" should {
     "cost 205p" in {
       val mixedAppleOrangeShoppingCart: List[String] = List("apple", "apple", "orange", "apple")
