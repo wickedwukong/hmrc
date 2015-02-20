@@ -26,9 +26,9 @@ class CheckoutSpec extends Specification {
   }
 
   "Two apples" should {
-    "cost 120p" in {
+    "cost 60p because of the buy one get one free offer" in {
       val twoAppleShoppingCart: List[String] = List("apple", "apple")
-      new Checkout().scan(twoAppleShoppingCart) must_== 120
+      new Checkout().scan(twoAppleShoppingCart) must_== 60
     }
   }
 
@@ -42,7 +42,7 @@ class CheckoutSpec extends Specification {
   "Mixed 3 apple and one orange shopping cart" should {
     "cost 205p" in {
       val mixedAppleOrangeShoppingCart: List[String] = List("apple", "apple", "orange", "apple")
-      new Checkout().scan(mixedAppleOrangeShoppingCart) must_== 205
+      new Checkout().scan(mixedAppleOrangeShoppingCart) must_== 145
     }
   }
 
