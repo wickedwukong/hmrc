@@ -4,6 +4,56 @@ import org.specs2.mutable._
 
 class CheckoutSpec extends Specification {
 
+  "One babana shopping cart" should {
+    "cost 20p" in {
+      val oneBananaShoppingCart: List[String] = List("banana")
+      new Checkout().scan(oneBananaShoppingCart) must_== 20
+    }
+  }
+
+  "Two babanas only shopping cart" should {
+    "cost 20p because buy one get one free offer" in {
+      val twoBananaOnlyShoppingCart: List[String] = List("banana", "banana")
+      new Checkout().scan(twoBananaOnlyShoppingCart) must_== 20
+    }
+  }
+
+  "One apple and one banana only shoppng cart" should {
+    "cost 60p because the cheapest one go free offer" in {
+      val twoBananaOnlyShoppingCart: List[String] = List("apple", "banana")
+      new Checkout().scan(twoBananaOnlyShoppingCart) must_== 60
+    }
+  }
+
+  "two apples and one banana only shoppng cart" should {
+    "cost 60p because the cheapest one go free offer" in {
+      val twoApplesOneBananaOnlyShoppingCart: List[String] = List("apple", "apple", "banana")
+      new Checkout().scan(twoApplesOneBananaOnlyShoppingCart) must_== 120
+    }
+  }
+
+  "two apples and two bananas only shopping cart" should {
+    "cost 60p because the cheapest one go free offer" in {
+      val twoApplesTwoBananasOnlyShoppingCart: List[String] = List("apple", "banana", "banana", "apple")
+      new Checkout().scan(twoApplesTwoBananasOnlyShoppingCart) must_== 120
+    }
+  }
+
+  "tree apples and one bananas only shopping cart" should {
+    "cost 60p because the cheapest one go free offer" in {
+      val threeApplesOneBananasOnlyShoppingCart: List[String] = List("apple", "apple", "banana", "apple")
+      new Checkout().scan(threeApplesOneBananasOnlyShoppingCart) must_== 120
+    }
+  }
+
+  "One apple and two banana" should {
+    "cost 80p because" in {
+      val twoAppleOneBananaOnlyShoppingCart: List[String] = List("apple", "banana", "banana")
+      new Checkout().scan(twoAppleOneBananaOnlyShoppingCart) must_== 80
+    }
+  }
+
+
   "Empty shopping cart" should {
     "cost zero" in {
       val emptyShoppingCart: List[String] = List()
